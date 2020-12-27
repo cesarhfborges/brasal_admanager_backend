@@ -32,6 +32,7 @@ php artisan serve
 ```
 
 ## Pacotes usados (Documentação)
+- [Laravel](https://laravel.com/docs/8.x/installation).
 - [jwt-auth](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/).
 - [adldap2-laravel](https://adldap2.github.io/Adldap2-Laravel/#/auth/setup?id=databaseuserprovider).
 
