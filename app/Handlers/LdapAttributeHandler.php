@@ -17,8 +17,6 @@ class LdapAttributeHandler
      */
     public function handle(LdapUser $ldapUser, EloquentUser $user)
     {
-        $a = $ldapUser->getAttributes();
-
         $user->name = $ldapUser->getDisplayName();
         $user->username = $ldapUser->getAccountName();
     }
