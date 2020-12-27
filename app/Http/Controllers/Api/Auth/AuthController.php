@@ -13,13 +13,22 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        $auth = Auth::attempt(['email' => $request->get('username'), 'password' => 'password']);
-        if (!$auth) {
+        $jwt_token = Auth::attempt(['email' => $request->get('username'), 'password' => 'password']);
+
+
+        if (!$jwt_token) {
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid Email or Password',
             ], Response::HTTP_UNAUTHORIZED);
         }
-        return response()->json([$auth], 200);
+
+
+        return response()->json([
+            'success' => true,
+            'token_type' => 'bearer',
+            'access_token' => $jwt_token,
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ], 200);
     }
 }

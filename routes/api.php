@@ -18,3 +18,12 @@ Route::group([
     Route::post('login', 'AuthController@login');
 
 });
+
+Route::group([
+    'middleware' => 'jwt.auth',
+    'namespace' => 'App\Http\Controllers\Api',
+], function () {
+
+    Route::resource('usuarios', 'UsuariosController')->only(['index']);
+
+});
