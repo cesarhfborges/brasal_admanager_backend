@@ -12,32 +12,17 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -49,6 +34,24 @@ class User extends Authenticatable implements JWTSubject
 
     public function getJWTCustomClaims()
     {
-        return [];
+        return [
+            'matricula' => $this->matricula,
+            'cpf' => $this->cpf,
+            'tipo' => $this->tipo,
+            'nome' => $this->nome,
+            'data_nasc' => $this->data_nasc,
+            'email' => $this->email,
+            'telefone1' => $this->telefone1,
+            'telefone2' => $this->telefone2,
+            'rua' => $this->rua,
+            'numero' => $this->numero,
+            'complemento' => $this->complemento,
+            'bairro' => $this->bairro,
+            'estado' => $this->estado,
+            'cidade' => $this->cidade,
+            'cep' => $this->cep,
+            'pais' => $this->pais,
+            'imagem' => $this->imagem,
+        ];
     }
 }
