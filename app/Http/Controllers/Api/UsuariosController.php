@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Adldap\AdldapInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -10,16 +11,20 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuariosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse|Response
-     */
+    private $ldap;
+
+    public function __construct(AdldapInterface $ldap)
+    {
+        $this->ldap = $ldap;
+    }
+
+
     public function index()
     {
-        $teste = Auth::user();
 
-        return response()->json(['success' => true, 'logged-in' => true], 200);
+        $users = $this->ldap->search()->users()->get();
+
+        return response()->json($users, 200);
     }
 
     /**

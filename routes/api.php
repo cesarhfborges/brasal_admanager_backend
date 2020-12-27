@@ -20,7 +20,7 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => 'jwt.protect',
+//    'middleware' => 'jwt.protect',
     'namespace' => 'App\Http\Controllers\Api',
 ], function () {
 

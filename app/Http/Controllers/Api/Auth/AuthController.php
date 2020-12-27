@@ -13,7 +13,12 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        $jwt_token = Auth::attempt(['email' => $request->get('username'), 'password' => 'password']);
+
+
+        $jwt_token = Auth::attempt([
+            'userprincipalname' => $request->get('username'),
+            'password' => $request->get('password'),
+        ]);
 
 
         if (!$jwt_token) {
