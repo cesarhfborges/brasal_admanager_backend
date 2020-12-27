@@ -4,18 +4,18 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
-use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject, LdapAuthenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, AuthenticatesWithLdap;
+    use Notifiable;
 
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'objectguid'
     ];
 
     protected $hidden = [

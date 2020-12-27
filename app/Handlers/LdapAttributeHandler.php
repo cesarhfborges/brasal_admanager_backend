@@ -1,0 +1,25 @@
+<?php
+namespace App\Handlers;
+
+use App\Models\User as EloquentUser;
+use Adldap\Models\User as LdapUser;
+use Psy\Util\Json;
+
+class LdapAttributeHandler
+{
+    /**
+     * Synchronizes ldap attributes to the specified model.
+     *
+     * @param LdapUser     $ldapUser
+     * @param EloquentUser $eloquentUser
+     *
+     * @return void
+     */
+    public function handle(LdapUser $ldapUser, EloquentUser $user)
+    {
+        $a = $ldapUser->getAttributes();
+
+        $user->name = $ldapUser->getDisplayName();
+        $user->username = $ldapUser->getAccountName();
+    }
+}

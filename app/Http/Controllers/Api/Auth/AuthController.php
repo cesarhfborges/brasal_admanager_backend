@@ -12,30 +12,33 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('userprincipalname', 'password');
+        $credentials = $request->only('username', 'password');
 
         $validator = Validator::make($credentials, [
-            'userprincipalname' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json([
-                'code' => 1,
-                'message' => 'Validation failed.',
+                'message' => 'Verifique os campos e tente novamente.',
                 'errors' => $validator->errors()
-            ], 422);
+            ], 400);
         }
 
         $token = Auth::attempt($credentials);
 
-        $user = Auth::user();
+        if (!$token) {
+            return response()->json([
+                'message' => 'Credenciais inválidas.',
+            ], 401);
+        }
 
         return response()->json([
             'success' => true,
             'token_type' => 'bearer',
             'access_token' => $token,
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory('')->getTTL() * 60
         ], 200);
     }
 }
