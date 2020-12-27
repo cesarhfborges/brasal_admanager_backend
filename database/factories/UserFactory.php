@@ -23,8 +23,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'Cesar Henrique',
+            'objectguid' => 'fbbf7994-0ba8-4055-92b9-24656e03cb36',
+            'name' => 'Cesar Henrique Ferreira Borges',
             'email' => 'cesar@darvsistemas.local',
+            'username' => 'cesar',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

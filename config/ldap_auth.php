@@ -267,7 +267,7 @@ return [
     |
     */
 
-    'login_fallback' => env('LDAP_LOGIN_FALLBACK', true),
+    'login_fallback' => env('LDAP_LOGIN_FALLBACK', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -288,6 +288,8 @@ return [
     */
 
     'sync_attributes' => [
+
+//        App\Handlers\LdapAttributeHandler::class,
 
         'email' => 'userprincipalname',
 
