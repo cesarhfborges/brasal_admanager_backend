@@ -2,49 +2,30 @@
 
 namespace App\Models;
 
-use Adldap\Laravel\Traits\HasLdapUser;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject, LdapAuthenticatable
 {
-    use HasFactory, Notifiable, HasLdapUser;
+    use Notifiable, AuthenticatesWithLdap;
 
     protected $fillable = [
-        'objectguid',
         'name',
         'email',
-        'username',
         'password',
-        'dn',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
-        'api_token'
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function id()
-    {
-        return $this->id;
-    }
-
-    public function dn()
-    {
-        return $this->dn;
-    }
-
-    public function email()
-    {
-        return $this->email;
-    }
 
     public function getJWTIdentifier()
     {
@@ -53,14 +34,6 @@ class User extends Authenticatable implements JWTSubject
 
     public function getJWTCustomClaims()
     {
-//        return [
-//            'name' => $this->name,
-//            'email' => $this->email,
-//        ];
         return [];
     }
-
-//    public static function find() {
-//        return false;
-//    }
 }

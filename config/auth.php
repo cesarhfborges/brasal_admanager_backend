@@ -43,8 +43,8 @@ return [
 
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'users',
-            'hash' => false,
+            'provider' => 'ldap',
+            'hash' => true,
         ],
     ],
 
@@ -66,15 +66,24 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'ldap' => [
             'driver' => 'ldap',
-            'model' => App\Models\User::class,
+            'model' => LdapRecord\Models\ActiveDirectory\User::class,
+            'database' => [
+                'model' => App\Models\User::class,
+                'sync_passwords' => false,
+                'sync_attributes' => [
+                    'name' => 'cn',
+                    'email' => 'mail'
+                ]
+            ],
+            'rules' => [],
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'users' => [
+             'driver' => 'eloquent',
+             'table' => 'users',
+         ],
     ],
 
     /*

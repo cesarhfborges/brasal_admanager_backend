@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Adldap\AdldapInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,7 +12,7 @@ class UsuariosController extends Controller
 {
     private $ldap;
 
-    public function __construct(AdldapInterface $ldap)
+    public function __construct()
     {
         $this->ldap = $ldap;
     }
