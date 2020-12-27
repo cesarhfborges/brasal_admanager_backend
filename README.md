@@ -18,9 +18,9 @@ php artisan migrate:fresh
 ```
 
 
-## Pacotes usados
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
+## Pacotes usados (Documentação)
+- [jwt-auth](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/).
+- [adldap2-laravel](https://adldap2.github.io/Adldap2-Laravel/#/auth/setup?id=databaseuserprovider).
 
 ## Problemas
 Problemas no carregamento dos pacotes
