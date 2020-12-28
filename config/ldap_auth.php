@@ -69,6 +69,7 @@ return [
 
         // Regras
 //        App\Rules\OnlyManagersAndAccounting::class,
+//        App\Rules\IsAccountant::class,
     ],
 
     /*
@@ -96,7 +97,7 @@ return [
         // Adldap\Laravel\Scopes\UidScope::class,
 
         // Scopes
-//        App\Scopes\AccountingScope::class,
+        App\Scopes\AccountingScope::class,
 
     ],
 

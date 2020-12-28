@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use Adldap\AdldapInterface;
+use Adldap\Laravel\Facades\Adldap;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,7 +14,7 @@ class UsuariosController extends Controller
 {
     private $ldap;
 
-    public function __construct()
+    public function __construct(AdldapInterface $ldap)
     {
         $this->ldap = $ldap;
     }
@@ -20,9 +22,7 @@ class UsuariosController extends Controller
 
     public function index()
     {
-
         $users = $this->ldap->search()->users()->get();
-
         return response()->json($users, 200);
     }
 
@@ -69,16 +69,19 @@ class UsuariosController extends Controller
         //
     }
 
+
     /**
-     * Update the specified resource in storage.
-     *
      * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param $id
+     * @return JsonResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = $this->ldap->search()->users()->whereEquals('objectsid', $id)->firstOrFail();
+        $user->displayname = $request->get('displayname');
+        $user->save();
+
+        return response()->json($user, 200);
     }
 
     /**

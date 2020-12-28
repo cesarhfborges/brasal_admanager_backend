@@ -26,7 +26,9 @@ class AuthController extends Controller
             ], 400);
         }
 
-        $token = Auth::attempt($credentials);
+        $remember = $request->get('remember') ? 21600 : 3600;
+
+        $token = auth()->setTTL($remember)->attempt($credentials, true);
 
         if (!$token) {
             return response()->json([
@@ -38,7 +40,15 @@ class AuthController extends Controller
             'success' => true,
             'token_type' => 'bearer',
             'access_token' => $token,
-            'expires_in' => auth()->factory('')->getTTL() * 60
+            'expires_in' => auth()->factory('')->getTTL() * 60,
+            'user' => Auth::user()
         ], 200);
+    }
+
+    public function logout() {
+        Auth::logout();
+        return response()->json([
+            'message' => 'Sucesso',
+        ], 401);
     }
 }

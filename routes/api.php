@@ -17,13 +17,14 @@ Route::group([
 
     Route::post('login', 'AuthController@login');
 
+    Route::get('logout', 'AuthController@logout')->middleware('jwt.auth');
 });
 
 Route::group([
-//    'middleware' => 'jwt.protect',
+    'middleware' => 'jwt.auth',
     'namespace' => 'App\Http\Controllers\Api',
 ], function () {
 
-    Route::resource('usuarios', 'UsuariosController')->only(['index']);
+    Route::resource('usuarios', 'UsuariosController')->only(['index', 'update']);
 
 });
