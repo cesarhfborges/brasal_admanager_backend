@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         if (!$token) {
             return response()->json([
-                'message' => 'Credenciais inválidas.',
+                'message' => 'Não foi possível efetuar login, verifique seu usuário e senha e tente novamente.',
             ], 401);
         }
 

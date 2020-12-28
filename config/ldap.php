@@ -35,6 +35,29 @@ return [
 
     'connections' => [
 
+        'cocacola' => [
+            'auto_connect' => true,
+            'connection' => Adldap\Connections\Ldap::class,
+
+            'settings' => [
+                'hosts'            => ['cocacola-bsb.com.br', '172.18.6.1', '172.18.0.200', '172.18.0.165'], //'cocacola-bsb.com.br'
+                'base_dn'          => 'dc=cocabsb,dc=com,dc=br',
+                'username'         => 'chborges',
+                'password'         => '@Dj91344356',
+
+                // Optional Configuration Options
+                'schema'           => Adldap\Schemas\ActiveDirectory::class,
+                'account_prefix'   => '',
+                'account_suffix'   => '',
+                'port'             => 389,
+                'follow_referrals' => false,
+                'use_ssl'          => false,
+                'use_tls'          => false,
+                'version'          => 3,
+                'timeout'          => 5,
+            ],
+        ],
+
         'default' => [
             'auto_connect' => true,
             'connection' => Adldap\Connections\Ldap::class,

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'connection' => env('LDAP_CONNECTION', 'default'),
+    'connection' => env('LDAP_CONNECTION', 'cocacola'),
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +97,7 @@ return [
         // Adldap\Laravel\Scopes\UidScope::class,
 
         // Scopes
-        App\Scopes\AccountingScope::class,
+//        App\Scopes\AccountingScope::class,
 
     ],
 
