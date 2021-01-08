@@ -35,7 +35,30 @@ return [
 
     'connections' => [
 
-        'cocacola' => [
+        'default' => [
+            'auto_connect' => true,
+            'connection' => Adldap\Connections\Ldap::class,
+
+            'settings' => [
+                'hosts'            => ['52.87.186.93', 'ldap.forumsys.com'], // 'forumsys'
+                'base_dn'          => 'dc=example,dc=com',
+                'username'         => 'read-only-admin@forumsys.com',
+                'password'         => 'password',
+
+                // Optional Configuration Options
+                'schema'           => Adldap\Schemas\ActiveDirectory::class,
+                'account_prefix'   => '',
+                'account_suffix'   => '',
+                'port'             => 389,
+                'follow_referrals' => false,
+                'use_ssl'          => false,
+                'use_tls'          => false,
+                'version'          => 3,
+                'timeout'          => 5,
+            ],
+        ],
+
+        'brasal' => [
             'auto_connect' => true,
             'connection' => Adldap\Connections\Ldap::class,
 
@@ -58,7 +81,7 @@ return [
             ],
         ],
 
-        'default' => [
+        'forumsys' => [
             'auto_connect' => true,
             'connection' => Adldap\Connections\Ldap::class,
 

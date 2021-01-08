@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'connection' => env('LDAP_CONNECTION', 'cocacola'),
+    'connection' => env('LDAP_CONNECTION', 'forumsys'),
 
     /*
     |--------------------------------------------------------------------------
