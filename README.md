@@ -34,7 +34,8 @@ php artisan serve
 ## Pacotes usados (Documentação)
 - [Laravel](https://laravel.com/docs/8.x/installation).
 - [jwt-auth](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/).
-- [adldap2-laravel](https://adldap2.github.io/Adldap2-Laravel/#/auth/setup?id=databaseuserprovider).
+- [adldap2-laravel](https://adldap2.github.io/Adldap2-Laravel/#/auth/setup?id=databaseuserprovider). (REMOVENDO)
+- [ldaprecord](https://ldaprecord.com/docs/laravel/v2/installation/).
 
 ## Problemas
 Problemas no carregamento dos pacotes
