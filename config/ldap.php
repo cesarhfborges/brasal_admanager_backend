@@ -14,7 +14,7 @@ return [
     */
 
 //    'default' => env('LDAP_CONNECTION', 'default'),
-    'default' => 'forumsys',
+    'default' => 'zflexldap',
 
     /*
     |--------------------------------------------------------------------------
@@ -40,11 +40,11 @@ return [
             'use_tls' => env('LDAP_TLS', false),
         ],
 
-        'forumsys' => [
-            'hosts' => ['ldap.forumsys.com'],
-            'base_dn' => 'cn=read-only-admin,dc=example,dc=com',
-            'username' => 'admin',
-            'password' => 'password',
+        'zflexldap' => [
+            'hosts' => ['www.zflexldap.com'],
+            'base_dn' => 'dc=zflexsoftware,dc=com',
+            'username' => 'ro_admin',
+            'password' => 'zflexpass',
             'port' => 389,
             'timeout' => 5,
             'use_ssl' => false,

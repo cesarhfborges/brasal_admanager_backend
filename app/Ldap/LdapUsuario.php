@@ -6,11 +6,8 @@ use LdapRecord\Models\Model;
 
 class LdapUsuario extends Model
 {
-    /**
-     * The object classes of the LDAP model.
-     *
-     * @var array
-     */
+    protected $connection = 'zflexldap';
+
     public static $objectClasses = [
         'top',
         'person',
